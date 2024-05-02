@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block contents %}
+{% for x in contents %}
+{% if x[0]=="paragraph" %}
+<p>{{x[1]}}</p>
+{% elif x[0]=="heading_1" %}
+<h1>{{x[1]}}</h1>
+{% elif x[0]=="heading_2" %}
+<h2>{{x[1]}}</h2>
+{% elif x[0]=="heading_3" %}
+<h3>{{x[1]}}</h3>
+{% elif x[0]=="bulleted_list_item" %}
+<li>{{x[1]}}</li>
+{% elif x[0]=="image" %}
+<img src="{{x[1]}}" width="50%" height="50%">
+{% elif x[0]=="bookmark" %}
+<a href="{{x[1]}}">→ここ</a>
+{% endif %}
+{% endfor %}
+{% endblock %}

@@ -1,0 +1,11 @@
+/.venv/
+*.ini
+*.db
+*.log
+./start.bat
+*__pycache__/
+note.txt
+note2.txt
+test.py
+test2.py
+start.bat
