@@ -1,9 +1,9 @@
 # pythonを用いたnotionとのデータ連携の試作 
 ## (需要に合えば使ってください。）
-notionのデータデースをpythonから取得するためのモジュールを作りました。（ここではflaskを使っています）
 
+notionのデータデース内の情報をpythonから取得するモジュールを作りました。（ここではフレームワークとしてflaskを使っています）
 
-notion-clientさえpip installしてもらえれば使えると思います。
+notion-clientさえインストールしてもらえれば使えると思います。
 
 時刻を日本に変えたいならばpython-dateutilもインストールしてください。
 
