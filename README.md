@@ -1,3 +1,4 @@
-#pythonを用いたnotionとのデータ連携の試作
+# pythonを用いたnotionとのデータ連携の試作
 notionのデータデースをpythonから取得するためのモジュールを作りました。
 需要に合えば使ってください。
+notion-clientさえpip installしてもらえれば使えると思います。
