@@ -5,3 +5,5 @@ notionのデータデースをpythonから取得するためのモジュール�
 notion-clientさえpip installしてもらえれば使えると思います。
 
 時刻を日本に変えたいならばpython-dateutilもインストールしてください。
+
+アプリの本体はmy_module内のnotion.pyにあります。
