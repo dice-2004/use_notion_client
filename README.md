@@ -1,5 +1,5 @@
 # pythonを用いたnotionとのデータ連携の試作 
-## (需要に合えば使ってください。）
+## (ぜひ参考に使ってください）
 
 notionのデータデース内の情報をpythonから取得するモジュールを作りました。（ここではフレームワークとしてflaskを使っています）
 
@@ -12,9 +12,8 @@ notionのデータデース内の情報をpythonから取得するモジュー�
  - Creation date（作成日時）
  - Last updated（最終更新日）
 
+モジュールの本体はmy_package内のnotion.pyにあります。
 
 notion-clientさえインストールしてもらえれば使えると思います。
 
 時刻を日本に変えたいならばpython-dateutilもインストールしてください。
-
-アプリの本体はmy_package内のnotion.pyにあります。
