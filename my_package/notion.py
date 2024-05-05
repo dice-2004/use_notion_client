@@ -18,6 +18,7 @@ def get_notion_api_key():#config.iniからapi_keyを取得する
     return client
 
 ##各関数の先頭に    client = get_notion_api_key()をつける
+#別に要らない(__init__.pyで取得していればの話)
 
 
 def read_notion_database(database_id):# データベースの全ての情報を取得する
@@ -31,19 +32,6 @@ def read_notion_database(database_id):# データベースの全ての情報を�
     print(response)
     return response
 
-
-def get_page_title(page_id):#title取得
-    # client = get_notion_api_key()
-    response = client.pages.retrieve(
-        **{
-            "page_id": page_id,
-            "properties": [
-                "Title"
-            ]
-        }
-    )
-
-    return response["properties"]["Title"]["title"][0]["plain_text"]
 
 
 def get_page_content(page_id):#ページの内容取得
@@ -59,32 +47,6 @@ def get_page_content(page_id):#ページの内容取得
     return response
 
 
-#created by chatGPT
-def get_database_pages_and_public(database_id):#OK
-    """データベースIDからすべてのページIDとプロパティ「public」を取得する"""
-    # client = get_notion_api_key()
-    query = client.databases.query(database_id=database_id)
-    results = []
-    for page in query['results']:
-        page_id = page['id']
-        public = page['properties'].get('public', {}).get('checkbox', False)
-        results.append({'page_id': page_id, 'public': public})
-    return results
-
-
-#created by chatGPT & me
-def get_page_properties_title_category_creation_date(page_id):#OK
-    """ページIDからプロパティ「Title」、「Category」、「Creation date」を取得する"""
-    # client = get_notion_api_key()
-    page = client.pages.retrieve(page_id=page_id)
-    title = page['properties'].get('Title', {}).get('title', [])[0].get('plain_text', '')
-    category = [option['name'] for option in page['properties'].get('Category', {}).get('multi_select', [])]
-    creation_date = page['properties'].get('Creation date', {}).get('created_time', '')
-    creation_date = func.convert_date_format(creation_date)
-    print(page)
-    return {'title': title, 'category': category, 'creation_date': creation_date}
-
-
 #created by chatGPT & me
 def get_page_property_last_updated(page_id):#OK
     """ページIDからプロパティ「Last updated」を取得する"""
@@ -93,6 +55,7 @@ def get_page_property_last_updated(page_id):#OK
     last_updated = page['properties'].get('Last updated', {}).get('last_edited_time', '')
     last_updated = func.convert_date_format(last_updated)
     return {'last_updated': last_updated}
+
 
 
 #created by chatGPT & ME
@@ -149,6 +112,49 @@ def get_filtered_pages(database_id, specific_category=0, start_cursor=0):#OK
     next_cursor = start_cursor
 
     return results,next_cursor
+
+
+# def get_page_title(page_id):#title取得
+#     # client = get_notion_api_key()
+#     response = client.pages.retrieve(
+#         **{
+#             "page_id": page_id,
+#             "properties": [
+#                 "Title"
+#             ]
+#         }
+#     )
+
+#     return response["properties"]["Title"]["title"][0]["plain_text"]
+
+
+# #created by chatGPT
+# def get_database_pages_and_public(database_id):#OK
+#     """データベースIDからすべてのページIDとプロパティ「public」を取得する"""
+#     # client = get_notion_api_key()
+#     query = client.databases.query(database_id=database_id)
+#     results = []
+#     for page in query['results']:
+#         page_id = page['id']
+#         public = page['properties'].get('public', {}).get('checkbox', False)
+#         results.append({'page_id': page_id, 'public': public})
+#     return results
+
+
+# #created by chatGPT & me
+# def get_page_properties_title_category_creation_date(page_id):#OK
+#     """ページIDからプロパティ「Title」、「Category」、「Creation date」を取得する"""
+#     # client = get_notion_api_key()
+#     page = client.pages.retrieve(page_id=page_id)
+#     title = page['properties'].get('Title', {}).get('title', [])[0].get('plain_text', '')
+#     category = [option['name'] for option in page['properties'].get('Category', {}).get('multi_select', [])]
+#     creation_date = page['properties'].get('Creation date', {}).get('created_time', '')
+#     creation_date = func.convert_date_format(creation_date)
+#     print(page)
+#     return {'title': title, 'category': category, 'creation_date': creation_date}
+
+
+
 
 
 
